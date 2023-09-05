@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.11.5 on darwin)" generated="20230905 17:15:15.752" rpa="false" schemaversion="4">
+<suite id="s1" name="Web Assignment 002 Restructure" source="/Users/dewdoppio/Desktop/automate camp/automateCamp_Assignment/automateCamp_webAssignment002_restructure/testcases/web_assignment_002_restructure.robot">
+<test id="s1-t1" name="Automate Test Web Assignment 002 Restructure" line="15">
+<kw name="Begin Web Test" library="common" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>about:blank</arg>
+<arg>browser=chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230905 17:15:15.838" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
+<status status="PASS" starttime="20230905 17:15:15.837" endtime="20230905 17:15:17.823"/>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<arg>0.1s</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" starttime="20230905 17:15:17.823" endtime="20230905 17:15:17.824"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230905 17:15:17.824" endtime="20230905 17:15:18.340"/>
+</kw>
+<status status="PASS" starttime="20230905 17:15:15.837" endtime="20230905 17:15:18.340"/>
+</kw>
+<kw name="Visit Acuart Website Login Page" library="common">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${URL_LOGIN}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20230905 17:15:18.341" level="INFO">Opening url 'http://testphp.vulnweb.com/login.php'</msg>
+<status status="PASS" starttime="20230905 17:15:18.341" endtime="20230905 17:15:19.221"/>
+</kw>
+<status status="PASS" starttime="20230905 17:15:18.341" endtime="20230905 17:15:19.221"/>
+</kw>
+<kw name="Login With Correct Username And Password, User To Userinfo Page" library="login_feature">
+<arg>${LOGIN_USERNAME}</arg>
+<arg>${LOGIN_PASSWORD}</arg>
+<arg>${LOGIN_NAME}</arg>
+<kw name="Input Username" library="page_login">
+<arg>${username}</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${LOGIN_INPUT_USERNAME}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230905 17:15:19.223" level="INFO">Typing text 'test' into text field '//div[@id='content']//form//input[@name='uname']'.</msg>
+<status status="PASS" starttime="20230905 17:15:19.222" endtime="20230905 17:15:19.710"/>
+</kw>
+<status status="PASS" starttime="20230905 17:15:19.222" endtime="20230905 17:15:19.710"/>
+</kw>
+<kw name="Input Password" library="page_login">
+<arg>${password}</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${LOGIN_INPUT_PASSWORD}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230905 17:15:19.711" level="INFO">Typing text 'test' into text field '//div[@id='content']//form//input[@name='pass']'.</msg>
+<status status="PASS" starttime="20230905 17:15:19.711" endtime="20230905 17:15:20.097"/>
+</kw>
+<status status="PASS" starttime="20230905 17:15:19.710" endtime="20230905 17:15:20.098"/>
+</kw>
+<kw name="Click Login Button" library="page_login">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${LOGIN_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230905 17:15:20.100" level="INFO">Clicking element '//div[@id='content']//form//input[@value='login']'.</msg>
+<status status="PASS" starttime="20230905 17:15:20.099" endtime="20230905 17:15:20.610"/>
+</kw>
+<status status="PASS" starttime="20230905 17:15:20.098" endtime="20230905 17:15:20.610"/>
+</kw>
+<kw name="Top Bar Should Contains Text &quot;Logout Username&quot;" library="section_masthead">
+<arg>${username}</arg>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${GLOBAL_NAV_TEXT_LOGOUT}</arg>
+<arg>Logout ${username}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20230905 17:15:20.611" level="INFO">${GLOBAL_NAV_TEXT_LOGOUT} = Logout test</msg>
+<status status="PASS" starttime="20230905 17:15:20.610" endtime="20230905 17:15:20.611"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>${GLOBAL_NAV_LOGOUT}</arg>
+<arg>${GLOBAL_NAV_TEXT_LOGOUT}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20230905 17:15:20.611" level="INFO">Verifying element '//div[@id='globalNav']//table//td[@align='right']//a' contains exact text 'Logout test'.</msg>
+<status status="PASS" starttime="20230905 17:15:20.611" endtime="20230905 17:15:20.842"/>
+</kw>
+<status status="PASS" starttime="20230905 17:15:20.610" endtime="20230905 17:15:20.842"/>
+</kw>
+<kw name="Userinfo Page Should Contain Title &quot;Name (Username)&quot;" library="page_userinfo">
+<arg>${name}</arg>
+<arg>${username}</arg>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<arg>${USERINFO_PAGE_PAGE_TITLE}</arg>
+<arg>${username}</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20230905 17:15:21.074" level="INFO">Element '//h2[@id='pageName']' contains text 'test'.</msg>
+<status status="PASS" starttime="20230905 17:15:20.844" endtime="20230905 17:15:21.074"/>
+</kw>
+<status status="PASS" starttime="20230905 17:15:20.843" endtime="20230905 17:15:21.074"/>
+</kw>
+<status status="PASS" starttime="20230905 17:15:19.222" endtime="20230905 17:15:21.075"/>
+</kw>
+<kw name="Click Sidebar To Categories Page, Verify To Page Successfully" library="clicklink_feature">
+<kw name="Click Sidebar To Categories Page" library="section_sidebar">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${NAV_BAR_LI_BROWSE_CATEGORIES}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230905 17:15:21.077" level="INFO">Clicking element '//div[@id='sectionLinks']//li//a[contains(@href,'categories.php')]'.</msg>
+<status status="PASS" starttime="20230905 17:15:21.076" endtime="20230905 17:15:21.608"/>
+</kw>
+<status status="PASS" starttime="20230905 17:15:21.076" endtime="20230905 17:15:21.609"/>
+</kw>
+<kw name="Verify Categories Page Load Success With Page Name" library="page_categories">
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<arg>${CATEGOTIES_PAGE_TITLE}</arg>
+<arg>${CATEGOTIES_PAGE_TITLE_TEXT}</arg>
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<status status="PASS" starttime="20230905 17:15:21.609" endtime="20230905 17:15:21.835"/>
+</kw>
+<status status="PASS" starttime="20230905 17:15:21.609" endtime="20230905 17:15:21.835"/>
+</kw>
+<status status="PASS" starttime="20230905 17:15:21.075" endtime="20230905 17:15:21.835"/>
+</kw>
+<kw name="Click Title In Categories Page, Verify To List Products Page Successfully" library="clicklink_feature">
+<arg>Posters</arg>
+<kw name="Click Category Title To List Products Page" library="page_categories">
+<arg>${title}</arg>
+<kw name="Set This Category Title Element Xpath By Category Name" library="page_categories">
+<arg>${category_name}</arg>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${CATEGOTIES_PAGE_LIST_PRODUCT_LINK}</arg>
+<arg>${CATEGOTIES_PAGE_CONTENT}//div[a[h3[text()='${category_name}']]]//a</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20230905 17:15:21.839" level="INFO">${CATEGOTIES_PAGE_LIST_PRODUCT_LINK} = //div[@id='content']//div[a[h3[text()='Posters']]]//a</msg>
+<status status="PASS" starttime="20230905 17:15:21.838" endtime="20230905 17:15:21.839"/>
+</kw>
+<status status="PASS" starttime="20230905 17:15:21.837" endtime="20230905 17:15:21.839"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${CATEGOTIES_PAGE_LIST_PRODUCT_LINK}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230905 17:15:21.840" level="INFO">Clicking element '//div[@id='content']//div[a[h3[text()='Posters']]]//a'.</msg>
+<status status="PASS" starttime="20230905 17:15:21.839" endtime="20230905 17:15:23.014"/>
+</kw>
+<status status="PASS" starttime="20230905 17:15:21.837" endtime="20230905 17:15:23.015"/>
+</kw>
+<kw name="Verify List Products Page Load Success With Page Name" library="page_listproducts">
+<arg>${title}</arg>
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<arg>${LIST_PRODUCTS_PAGE_TITLE}</arg>
+<arg>${title}</arg>
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<status status="PASS" starttime="20230905 17:15:23.016" endtime="20230905 17:15:23.246"/>
+</kw>
+<status status="PASS" starttime="20230905 17:15:23.015" endtime="20230905 17:15:23.246"/>
+</kw>
+<status status="PASS" starttime="20230905 17:15:21.836" endtime="20230905 17:15:23.247"/>
+</kw>
+<kw name="Check List Products Page Contain Product" library="page_listproducts">
+<arg>Trees</arg>
+<kw name="Set This Product Element Xpath By Product Name" library="page_listproducts">
+<arg>${product_name}</arg>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${LIST_PRODUCTS_PAGE_PRODUCT_DIV}</arg>
+<arg>//div[a[h3[text()='${product_name}']]]</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20230905 17:15:23.249" level="INFO">${LIST_PRODUCTS_PAGE_PRODUCT_DIV} = //div[a[h3[text()='Trees']]]</msg>
+<status status="PASS" starttime="20230905 17:15:23.249" endtime="20230905 17:15:23.249"/>
+</kw>
+<status status="PASS" starttime="20230905 17:15:23.248" endtime="20230905 17:15:23.249"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>${LIST_PRODUCTS_PAGE_PRODUCT_DIV}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20230905 17:15:23.367" level="INFO">Current page contains element '//div[a[h3[text()='Trees']]]'.</msg>
+<status status="PASS" starttime="20230905 17:15:23.250" endtime="20230905 17:15:23.367"/>
+</kw>
+<status status="PASS" starttime="20230905 17:15:23.247" endtime="20230905 17:15:23.368"/>
+</kw>
+<kw name="Check This Product Detail And Artist" library="page_listproducts">
+<arg>Trees</arg>
+<arg>bla bla bla</arg>
+<arg>Blad3</arg>
+<kw name="Set This Product Element Xpath By Product Name" library="page_listproducts">
+<arg>${product_name}</arg>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${LIST_PRODUCTS_PAGE_PRODUCT_DIV}</arg>
+<arg>//div[a[h3[text()='${product_name}']]]</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20230905 17:15:23.371" level="INFO">${LIST_PRODUCTS_PAGE_PRODUCT_DIV} = //div[a[h3[text()='Trees']]]</msg>
+<status status="PASS" starttime="20230905 17:15:23.370" endtime="20230905 17:15:23.371"/>
+</kw>
+<status status="PASS" starttime="20230905 17:15:23.369" endtime="20230905 17:15:23.371"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>${LIST_PRODUCTS_PAGE_PRODUCT_DIV}//${LIST_PRODUCTS_PAGE_PRODUCT_DETAIL}</arg>
+<arg>${product_detail}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20230905 17:15:23.373" level="INFO">Verifying element '//div[a[h3[text()='Trees']]]//p[1]' contains exact text 'bla bla bla'.</msg>
+<status status="PASS" starttime="20230905 17:15:23.371" endtime="20230905 17:15:23.599"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>${LIST_PRODUCTS_PAGE_PRODUCT_DIV}//${LIST_PRODUCTS_PAGE_PRODUCT_ARTIST}</arg>
+<arg>${product_artist}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20230905 17:15:23.602" level="INFO">Verifying element '//div[a[h3[text()='Trees']]]//a[contains(@href,'artists')]' contains exact text 'Blad3'.</msg>
+<status status="PASS" starttime="20230905 17:15:23.600" endtime="20230905 17:15:23.826"/>
+</kw>
+<status status="PASS" starttime="20230905 17:15:23.368" endtime="20230905 17:15:23.826"/>
+</kw>
+<kw name="Click Title In List Products Page, Verify To Product Page Successfully" library="clicklink_feature">
+<arg>Trees</arg>
+<kw name="Click Product Title To Product Page" library="page_listproducts">
+<arg>${title}</arg>
+<kw name="Set This Product Element Xpath By Product Name" library="page_listproducts">
+<arg>${product_name}</arg>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${LIST_PRODUCTS_PAGE_PRODUCT_DIV}</arg>
+<arg>//div[a[h3[text()='${product_name}']]]</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20230905 17:15:23.830" level="INFO">${LIST_PRODUCTS_PAGE_PRODUCT_DIV} = //div[a[h3[text()='Trees']]]</msg>
+<status status="PASS" starttime="20230905 17:15:23.829" endtime="20230905 17:15:23.830"/>
+</kw>
+<status status="PASS" starttime="20230905 17:15:23.829" endtime="20230905 17:15:23.830"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${LIST_PRODUCTS_PAGE_PRODUCT_DIV}//${LIST_PRODUCTS_PAGE_PRODUCT_LINK}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230905 17:15:23.831" level="INFO">Clicking element '//div[a[h3[text()='Trees']]]//a[contains(@href,'product')]'.</msg>
+<status status="PASS" starttime="20230905 17:15:23.830" endtime="20230905 17:15:25.047"/>
+</kw>
+<status status="PASS" starttime="20230905 17:15:23.828" endtime="20230905 17:15:25.047"/>
+</kw>
+<kw name="Verify Product Page Load Success With Page Name" library="page_product">
+<arg>${title}</arg>
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<arg>${PRODUCTS_PAGE_TITLE}</arg>
+<arg>${title}</arg>
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<status status="PASS" starttime="20230905 17:15:25.049" endtime="20230905 17:15:25.277"/>
+</kw>
+<status status="PASS" starttime="20230905 17:15:25.048" endtime="20230905 17:15:25.278"/>
+</kw>
+<status status="PASS" starttime="20230905 17:15:23.827" endtime="20230905 17:15:25.278"/>
+</kw>
+<kw name="Click Add This Picture To Cart" library="page_product">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${PRODUCTS_PAGE_ADD_THIS_PICTURE_TO_CART}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230905 17:15:25.281" level="INFO">Clicking element '//form//input[@value='add this picture to cart']'.</msg>
+<status status="PASS" starttime="20230905 17:15:25.279" endtime="20230905 17:15:25.779"/>
+</kw>
+<status status="PASS" starttime="20230905 17:15:25.278" endtime="20230905 17:15:25.779"/>
+</kw>
+<kw name="Verify Cart Page Load Success With Cart Table" library="page_cart">
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<arg>${CART_TABLE_TH}</arg>
+<arg>${CART_TABLE_TH_TEXT}</arg>
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<status status="PASS" starttime="20230905 17:15:25.780" endtime="20230905 17:15:26.008"/>
+</kw>
+<status status="PASS" starttime="20230905 17:15:25.780" endtime="20230905 17:15:26.009"/>
+</kw>
+<kw name="Verify Adding Product Is In Cart Table" library="page_cart">
+<arg>${1}</arg>
+<arg>Trees</arg>
+<kw name="Table Cell Should Contain" library="SeleniumLibrary">
+<arg>${CART_TABLE}</arg>
+<arg>${row_no+1}</arg>
+<arg>${CART_TABLE_COLUMN_NO_TITLE}</arg>
+<arg>${product_name}</arg>
+<doc>Verifies table cell contains text ``expected``.</doc>
+<msg timestamp="20230905 17:15:26.705" level="INFO">Table cell contains 'Trees'.</msg>
+<status status="PASS" starttime="20230905 17:15:26.011" endtime="20230905 17:15:26.705"/>
+</kw>
+<status status="PASS" starttime="20230905 17:15:26.009" endtime="20230905 17:15:26.705"/>
+</kw>
+<kw name="Verify Cart Total Is Correct" library="page_cart">
+<arg>15000</arg>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>${CART_TABLE_TOTAL}</arg>
+<arg>Total: $${total_price}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20230905 17:15:26.709" level="INFO">Verifying element '//div[@id='content']//h3[contains(text(),'Total')]' contains exact text 'Total: $15000'.</msg>
+<status status="PASS" starttime="20230905 17:15:26.707" endtime="20230905 17:15:26.938"/>
+</kw>
+<status status="PASS" starttime="20230905 17:15:26.706" endtime="20230905 17:15:26.938"/>
+</kw>
+<kw name="End Web Test" library="common" type="TEARDOWN">
+<kw name="Close All Browsers" library="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20230905 17:15:26.940" endtime="20230905 17:15:27.111"/>
+</kw>
+<status status="PASS" starttime="20230905 17:15:26.939" endtime="20230905 17:15:27.111"/>
+</kw>
+<status status="PASS" starttime="20230905 17:15:15.837" endtime="20230905 17:15:27.111"/>
+</test>
+<status status="PASS" starttime="20230905 17:15:15.752" endtime="20230905 17:15:27.111"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Web Assignment 002 Restructure">Web Assignment 002 Restructure</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20230905 17:15:15.761" level="ERROR">Error in file '/Users/dewdoppio/Desktop/automate camp/automateCamp_Assignment/automateCamp_webAssignment002_restructure/Keywords/common.robot' on line 2: Resource file '/Users/dewdoppio/Desktop/automate camp/automateCamp_Assignment/import.robot' does not exist.</msg>
+</errors>
+</robot>
